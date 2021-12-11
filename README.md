@@ -1,3 +1,3 @@
-# aoc
+# aoc - Advent of Code
 
 
