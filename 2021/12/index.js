@@ -64,5 +64,5 @@ const find_paths_double = (node,path, paths) => {
 const part1 = find_paths('start', [], []);
 const part2 = find_paths_double('start', [], []);
 
-console.log("solution: " + part1.length);  //solution: 3495
-console.log("solution: " + part2.length);  //solution: 94849
+console.log("solution: " + part1.length);  //solution: 5576
+console.log("solution: " + part2.length);  //solution: 152837
