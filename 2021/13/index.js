@@ -18,15 +18,11 @@ input.forEach(c => transparent_paper[c[1]][c[0]] = '#');
 const seperate = {
   x: (arr, v) => {
     return arr.reduce((p,c) => {
-      let _t = c.slice(v,c.length);
-      _t.shift();
-      return [[...p[0], c.slice(0,v)],[...p[1], _t.reverse()]];
+      return [[...p[0], c.slice(0,v)],[...p[1], c.slice(v + 1, c.length).reverse()]];
     }, [[],[]])
   },
   y: (arr, v) => {
-    let _t = [...arr.slice(v,arr.length)]
-    _t.shift();
-    return [arr.slice(0,v),_t.reverse()]
+    return [arr.slice(0,v),arr.slice(v + 1,arr.length).reverse()]
   }
 }
 
@@ -43,7 +39,7 @@ const folding = (instruction) => {
   let _paper = [...transparent_paper];
   instruction.forEach(i => {
     let [align, position] = i.replace('fold along ', '').split('=');
-    let _s = seperate[align](_paper,position);
+    let _s = seperate[align](_paper,Number.parseInt(position));
     _paper = merge(_s);
   });
   return _paper;
